@@ -1,0 +1,31 @@
+def find_word(word_from_player):
+    validated_word = []
+    for permutation in track(permutations(word_from_player), description = 'Generating words ...'):
+        new_word = "".join(permutation)
+        new_word = new_word.lower()
+        print(new_word)
+        if new_word in dictionary_txt:
+            validated_word.append(new_word)   
+            return validated_word 
+
+def generate_points(letters):
+    sum = 0
+    for i in str(letters):
+            if type(i) == str:
+                if i == 'D' or i == 'G':
+                    sum += 2
+                elif i == 'B' or i == 'C' or i == 'M' or i == 'P':
+                    sum += 3
+                elif i == 'F' or i == 'H' or i == 'V' or i == 'W' or i == 'Y':
+                    sum += 4
+                elif i == 'K':
+                    sum += 5
+                elif i == 'J' or i == 'X':
+                    sum += 8
+                elif i == 'Q' or i == 'Z':
+                    sum += 10
+                else:
+                    sum += 1
+    return sum
+
+print(find_word_from_dic(['M', 'A', 'R', 'I', 'A', 'M', 'S'], dictionary_txt))
